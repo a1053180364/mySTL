@@ -30,7 +30,7 @@ namespace mystl {
 	struct has_iterator_cat
 	{
 	private:
-		struct two { char a; char b};
+		struct two { char a; char b; };
 		template <class U> static two test(...);
 		template <class U> static char test(typename U::iterator_category* = 0);
 	public:

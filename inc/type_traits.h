@@ -23,16 +23,14 @@ namespace mystl {
 
 	// is_pair
 	template<class T1, class T2>
-	struct pair
-	{
-		// 在 pair 结构体中定义一个模板结构体 is_pair，接受一个类型参数 T
-		template<class T>
-		struct is_pair : mystl::m_false_type {};// 默认为 false 类型
+	struct pair;
+	// 在 pair 结构体中定义一个模板结构体 is_pair，接受一个类型参数 T
+	template<class T>
+	struct is_pair : mystl::m_false_type {};// 默认为 false 类型
 
-		// 专门化 is_pair 用于 mystl::pair 类型
-		template<class T1, class T2>
-		struct is_pair<mystl::pair<T1, T2>> : mystl::m_true_type {};// 对于 mystl::pair 类型为 true 类型
-	};
+	// 专门化 is_pair 用于 mystl::pair 类型
+	template<class T1, class T2>
+	struct is_pair<mystl::pair<T1, T2>> : mystl::m_true_type {};// 对于 mystl::pair 类型为 true 类型
 
 	/*  使用场景：
 		mystl::pair<int, double>::is_pair<mystl::pair<int, double>>::value  // 结果为 true
